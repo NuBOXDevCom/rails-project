@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-9">
+    <%= yield(:content) %>
+  </div>
+  <div class="col-md-3">
+    <div class="list-group">
+      <a href="<%= root_path %>" class="list-group-item<%= yield(:tab) == 'home' ? ' active' : '' %> list-group-item-secondary">Accueil</a>
+    </div>
+    <h2 class="mt-4">Utilisateurs En Ligne</h2>
+    <div class="list-group">
+      <div class="list-group-item">
+        <ul id="presence" data-token="<%= jwt_token %>" class="text-left text-muted" data-user="<%= current_user.username %>"></ul>
+      </div>
+    </div>
+    <h2 class="mt-4">Mon Compte</h2>
+    <div class="list-group">
+      <a href="<%= edit_user_registration_path %>" class="list-group-item<%= yield(:tab) == 'profile' ? ' active' : '' %> list-group-item-secondary">Mon
+        profil</a>
+      <% if current_user.facebook_id.empty? %>
+          <a href="<%= user_facebook_omniauth_authorize_path %>" class="list-group-item list-group-item-secondary">Lier
+            mon compte à Facebook</a>
+      <% end %>
+      <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: 'list-group-item-warning list-group-item' %>
+    </div>
+    <h2 class="mt-4">Modules</h2>
+    <div class="list-group">
+      <% if current_user.admin? %>
+          <a href="<%= stanhome_products_path %>" class="list-group-item<%= yield(:tab) == 'stanhome' ? ' active' : '' %> list-group-item-secondary">Produits
+            StanHome</a>
+          <a href="<%= evolutions_path %>" class="list-group-item<%= yield(:tab) == 'evolution' ? ' active' : '' %> list-group-item-secondary">Evolution
+            physique</a>
+      <% end %>
+      <a href="<%= recipes_path %>" class="list-group-item<%= yield(:tab) == 'recipe' ? ' active' : '' %> list-group-item-secondary">Recettes</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+class StanhomeProduct < ApplicationRecord
+end

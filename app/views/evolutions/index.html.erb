@@ -1,0 +1,76 @@
+<% content_for :tab, :evolution %>
+<% content_for :content do %>
+    <% unless @evolution_infos.nil? %>
+        <div class="card">
+          <div class="card-body">
+            <u><strong>Conditions Physiques Actuelles :</strong></u>
+            <div class="row">
+              <div class="col-sm-2 text-right">Votre IMC :</div>
+              <div class="col-sm-2 text-left">
+                <span class="badge badge-primary"><%= @evolution_infos[:imc] %></span>
+              </div>
+              <div class="col-sm-2 text-right">Votre IMG :</div>
+              <div class="col-sm-2 text-left">
+                <span class="badge badge-primary"><%= @evolution_infos[:img] %>%</span>
+              </div>
+              <div class="col-sm-2 text-right">Votre Taille :</div>
+              <div class="col-sm-2 text-left">
+                <span class="badge badge-primary"><%= current_user.height.to_f / 100 %> M</span>
+              </div>
+              <div class="col-sm-2 text-right">Poids Idéal :</div>
+              <div class="col-sm-2 text-left">
+                <span class="badge badge-primary"><%= @evolution_infos[:p_ideal] %> Kg</span>
+              </div>
+              <div class="col-sm-2 text-right">Votre Age :</div>
+              <div class="col-sm-2 text-left">
+                <span class="badge badge-primary"><%= @evolution_infos[:age] %> ans</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    <div class="card<% unless @evolution_infos.nil? %> mt-4<% end %>">
+      <div class="card-header text-white bg-secondary">
+        <h3>Evolution Physique</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover table-inverse">
+          <thead>
+          <tr>
+            <th>Semaine</th>
+            <th>Cou</th>
+            <th>Poitrine</th>
+            <th>T.Taille</th>
+            <th>Hanches</th>
+            <th>Bras</th>
+            <th>Cuisses</th>
+            <th>Mollets</th>
+            <th>Poids</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @evolutions.each do |evolution| %>
+              <tr>
+                <th scope="row"><%= evolution.week_number %>/<%= evolution.year %></th>
+                <td><%= evolution.size_neck %> cm</td>
+                <td><%= evolution.size_chest %> cm</td>
+                <td><%= evolution.size_west %> cm</td>
+                <td><%= evolution.size_hips %> cm</td>
+                <td><%= evolution.size_arms %> cm</td>
+                <td><%= evolution.size_legs %> cm</td>
+                <td><%= evolution.size_calves %> cm</td>
+                <td><%= evolution.weight %> Kg</td>
+                <td>
+                  <%= link_to 'Editer', edit_evolution_path(evolution), class: 'btn btn-sm btn-success' %>
+                  <%= link_to 'Supprimer', evolution, method: :delete, data: {confirm: 'Etes-vous sur ?'}, class: 'btn btn-sm btn-danger' %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= link_to 'Ajouter une Evolution', new_evolution_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+<% end %>
+<%= render template: 'layouts/profile' %>

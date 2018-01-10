@@ -1,0 +1,74 @@
+<%= form_for @evolution do |f| %>
+    <% if evolution.errors.any? %>
+        <div class="alert alert-warning" role="alert">
+          <ul>
+            <% evolution.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="form-group row">
+      <%= f.label :week_number, 'N° de Semaine', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :week_number, autofocus: true, class: 'form-control', value: Time.current.strftime("%U").to_i, required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :year, 'Année', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :year, class: 'form-control', value: Time.current.year, required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :size_neck, 'Cou', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :size_neck, class: 'form-control', :step => '0.01', required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :size_chest, 'Poitrine', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :size_chest, class: 'form-control', :step => '0.01', required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :size_west, 'T.Taille', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :size_west, class: 'form-control', :step => '0.01', required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :size_hips, 'Hanches', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :size_hips, class: 'form-control', :step => '0.01', required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :size_arms, 'Bras', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :size_arms, class: 'form-control', :step => '0.01', required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :size_legs, 'Cuisses', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :size_legs, class: 'form-control', :step => '0.01', required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :size_calves, 'Mollets', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :size_calves, class: 'form-control', :step => '0.01', required: true %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :weight, 'Poids', class: 'col-sm-4 col-form-label' %>
+      <div class="col-sm-8">
+        <%= f.number_field :weight, class: 'form-control', :step => '0.01', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.submit 'Enregistrer', class: 'btn btn-outline-success' %>
+    </div>
+<% end %>

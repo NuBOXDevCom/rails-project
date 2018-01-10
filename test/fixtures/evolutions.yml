@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  week_number: 1
+  year: 1
+  size_neck: 1.5
+  size_chest: 1.5
+  size_west: 1.5
+  size_hips: 1.5
+  size_arms: 1.5
+  size_legs: 1.5
+  size_calves: 1.5
+  weight: 1.5
+
+two:
+  user: two
+  week_number: 1
+  year: 1
+  size_neck: 1.5
+  size_chest: 1.5
+  size_west: 1.5
+  size_hips: 1.5
+  size_arms: 1.5
+  size_legs: 1.5
+  size_calves: 1.5
+  weight: 1.5

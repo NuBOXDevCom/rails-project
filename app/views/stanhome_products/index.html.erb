@@ -1,0 +1,35 @@
+<% content_for :tab, :stanhome %>
+<% content_for :content do %>
+    <div class="card">
+      <div class="card-header text-white bg-secondary">
+        <h3>Produits Stanhome</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover table-inverse">
+          <thead>
+          <tr>
+            <th>Référence</th>
+            <th class="text-center">Nom</th>
+            <th class="text-center">Quantité</th>
+            <th class="text-center">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @stanhome_products.each do |product| %>
+              <tr>
+                <th scope="row"><%= product.reference %></th>
+                <td><%= product.product_name %></td>
+                <td><%= product.quantity %></td>
+                <td>
+                  <%= link_to 'Editer', edit_stanhome_product_path(product), class: 'btn btn-sm btn-success' %>
+                  <%= link_to 'Supprimer', product, method: :delete, data: {confirm: 'Etes-vous sur ?'}, class: 'btn btn-sm btn-danger' %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <%= link_to 'Ajouter un Produit', new_stanhome_product_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+<% end %>
+<%= render template: 'layouts/profile' %>

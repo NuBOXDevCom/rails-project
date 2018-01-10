@@ -1,0 +1,34 @@
+<% content_for :tab, :recipe %>
+<% content_for :content do %>
+    <div class="card">
+      <div class="card-header text-white bg-secondary">
+        <h3><%= @recipe.name.capitalize %></h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-4 text-right">Temps de préparation :</div>
+          <div class="col-sm-2 text-left">
+            <span class="badge badge-primary"><%= @recipe.preparation_time %> min.</span>
+          </div>
+          <div class="col-sm-4 text-right">Temps de cuisson / repos :</div>
+          <div class="col-sm-2 text-left">
+            <span class="badge badge-primary"><%= @recipe.cooking_time %> min.</span>
+          </div>
+          <div class="col-sm-4 text-right">Personnes :</div>
+          <div class="col-sm-2 text-left">
+            <span class="badge badge-primary"><%= @recipe.nb_persons %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header text-white bg-secondary">
+        <h5>Etapes de préparation</h5>
+      </div>
+      <div class="card-body">
+        <%= @recipe.preparation.html_safe %>
+      </div>
+    </div>
+<% end %>
+<%= render template: 'layouts/profile' %>

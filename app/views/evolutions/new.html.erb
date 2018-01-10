@@ -1,0 +1,12 @@
+<% content_for :tab, :evolution %>
+<% content_for :content do %>
+    <div class="card">
+      <div class="card-header text-white bg-secondary">
+        <h3>Ajout d'une évolution</h3>
+      </div>
+      <div class="card-body mx-auto">
+        <%= render 'form', evolution: @evolution %>
+      </div>
+    </div>
+<% end %>
+<%= render template: 'layouts/profile' %>

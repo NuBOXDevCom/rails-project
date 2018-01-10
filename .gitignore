@@ -1,0 +1,7 @@
+.idea/
+log/
+tmp/
+public/uploads/*
+Gemfile.lock
+*.keep
+*~

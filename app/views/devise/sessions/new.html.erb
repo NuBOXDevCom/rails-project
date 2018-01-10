@@ -1,0 +1,30 @@
+<div class="card border-secondary mx-auto" style="width: 30rem">
+  <div class="card-header text-white bg-secondary">
+    <h3><%= t('.sign_in') %></h3>
+  </div>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="form-group mt-4">
+          <%= f.label :login, t('activerecord.attributes.user.login'), class: 'sr-only' %>
+          <%= f.text_field :login, autofocus: true, class: 'form-control', placeholder: t('activerecord.attributes.user.login'), required: true %>
+        </div>
+        <div class="form-group mt-4">
+          <%= f.label :password, t('activerecord.attributes.user.password'), class: 'sr-only' %>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: t('activerecord.attributes.user.password'), required: true %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+            <div class="form-check mt-4">
+              <label class="form-check-label">
+                <%= f.check_box :remember_me, class: 'form-check-input', checked: true %>
+                <%= t('activerecord.attributes.user.remember_me') %>
+              </label>
+            </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.submit t('.sign_in'), class: 'btn btn-outline-success' %>
+        </div>
+    <% end %>
+    <%= render 'devise/shared/links' %>
+  </div>
+</div>

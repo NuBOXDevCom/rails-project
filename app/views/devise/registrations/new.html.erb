@@ -1,0 +1,33 @@
+<div class="card border-secondary mx-auto" style="width: 30rem">
+  <div class="card-header text-white bg-secondary">
+    <h3><%= t('.sign_up') %></h3>
+  </div>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="form-group mt-4">
+          <%= f.label :username, class: 'sr-only' %>
+          <%= f.text_field :username, autofocus: true, class: 'form-control', placeholder: t('activerecord.attributes.user.username'), required: true %>
+        </div>
+        <div class="form-group mt-4">
+          <%= f.label :email, class: 'sr-only' %>
+          <div class="input-group mb-2 mb-sm-0">
+            <div class="input-group-addon">@</div>
+            <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: t('activerecord.attributes.user.email'), required: true %>
+          </div>
+        </div>
+        <div class="form-group mt-4">
+          <%= f.label :password, t('activerecord.attributes.user.password'), class: 'sr-only' %>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: t('activerecord.attributes.user.password'), required: true %>
+        </div>
+        <div class="form-group mt-4">
+          <%= f.label :password_confirmation, t('activerecord.attributes.user.password_confirmation'), class: 'sr-only' %>
+          <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', placeholder: t('activerecord.attributes.user.password_confirmation'), required: true %>
+        </div>
+        <div class="form-group">
+          <%= f.submit t('.sign_up'), class: 'btn btn-outline-success' %>
+        </div>
+    <% end %>
+    <%= render 'devise/shared/links' %>
+  </div>
+</div>

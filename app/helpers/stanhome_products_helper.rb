@@ -1,0 +1,2 @@
+module StanhomeProductsHelper
+end

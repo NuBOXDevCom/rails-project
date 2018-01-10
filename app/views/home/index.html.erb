@@ -1,0 +1,32 @@
+<% content_for :tab, :home %>
+<% content_for :content do %>
+  <div class="card">
+    <div class="card-header text-white bg-secondary">
+      <h3>Accueil</h3>
+    </div>
+    <div class="card-body">
+      <h5>Bienvenue sur votre compte IntraHome</h5><br><br>
+      <% if @api_password.nil? || @api_password.empty? %>
+        <%= link_to 'Activer l\'Api', home_activate_api_path, class: 'btn btn-outline-secondary btn-sm', role: 'button' %>
+      <% else %>
+        <h2>Accès à l'Api</h2>
+        <div class="row justify-content-md-center">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <dl class="row">
+              <dt class="col-md-4 text-right">Url :</dt>
+              <dd class="col-md-8 text-left"><em>https://myhost.org/api/</em></dd>
+              <dt class="col-md-4 text-right">Identifiant :</dt>
+              <dd class="col-md-8 text-left"><em><%= current_user.email %></em></dd>
+              <dt class="col-md-4 text-right">Mot de passe :</dt>
+              <dd class="col-md-8 text-left"><em><%= @api_password %></em></dd>
+            </dl>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+        <%= link_to 'Regénérer un mot de passe', home_activate_api_path, class: 'btn btn-outline-warning btn-sm', role: 'button' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<%= render template: 'layouts/profile' %>
