@@ -33,7 +33,7 @@ gem 'bcrypt', '~> 3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap', '~> 4.1.2'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'devise'
